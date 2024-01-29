@@ -25,8 +25,8 @@ start chrome https://accounts.google.com/
 ECHO Opening Github Sign In
 start chrome https://github.com/login/
 
-:: Set your own file path
-set batchPath=""
+
+set batchPath="" :: Set to your own file path (not required, just allows it to apply each startup)
 set startupPath=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup
 copy "%batchPath%" "%startupPath%"
 ECHO Batch set to run on start up
