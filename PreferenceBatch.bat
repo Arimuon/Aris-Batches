@@ -7,7 +7,7 @@ set ChangeDefaultBrowser="True" :: On by default, change to "False" if you want 
 set ChangePersonalisation="True" :: On by default, change to "False" if you don't want to change the personalisation settings
 set OpenWebpages ="True" :: On by default, change to "False" if you don't want to open the webpages 
 
-IF "%ChangePersonalisation%"=="True" (
+if "%ChangePersonalisation%"=="True" (
     ECHO Applying Personalisation Settings
     :: Sets apps to dark theme
     REG add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /F
@@ -27,44 +27,44 @@ IF "%ChangePersonalisation%"=="True" (
     :: Disables taskbar transparency
     REG add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v EnableTransparency /t REG_DWORD /d 0 /F
     ECHO Applied Personalisation Settings
-    ) ELSE (
+    ) else: (
     ECHO Change personalisation skipped!
 )
 
-IF "%ChangeDefaultBrowser%"=="True" (
+if "%ChangeDefaultBrowser%"=="True" (
     ECHO Modifying Registry for Default Browser
     :: Makes Chrome the default browser
     REG add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\FileAssoc.html\shell\open\command" /v "(Default)" /t reg_sz /d "C:\Program Files\Google\Chrome\Application\chrome.exe" /F
     ECHO Chrome Made Default Browser
-    ) ELSE (
+    ) else: (
     ECHO Change default browser skipped!
 )
 
-IF "%ChangeDownloadFolder%"=="True" (
+if "%ChangeDownloadFolder%"=="True" (
     ECHO Changing Chrome Download Folder
     REG add "HKCU\Software\Google\Chrome\Default" /v DownloadDirectory /t REG_SZ /d "C:\Users\%USERPROFILE%\OneDrive - Cheshire College South & West\Downloads" /F
     ECHO Chrome Download Folder Changed
-    ) ELSE (
+    ) else: (
     ECHO Change download folder skipped!
 )
 
-IF "%OpenWebPages%"=="True" (
+if "%OpenWebPages%"=="True" (
     ECHO Opening Bitwarden Extension
     start chrome https://chromewebstore.google.com/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb
     ECHO Opening Google Sign In
     start chrome https://accounts.google.com/
     ECHO Opening Github Sign In
     start chrome https://github.com/login/
-    ) ELSE (
+    ) else: (
     ECHO Web pages skipped!
 )
 
-IF "%RunOnStartup%"=="True" (
+if "%RunOnStartup%"=="True" (
     set batchPath=%~dp0
     set startupPath=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup
     copy "%batchPath%" "%startupPath%"
     ECHO This batch was set to run on start up
-    ) ELSE (
+    ) else: (
     ECHO Set run on startup skipped!
 )
 PAUSE
