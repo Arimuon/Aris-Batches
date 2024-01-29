@@ -1,11 +1,11 @@
 @ECHO OFF
 ECHO Preference Automation
 :: Here is the settings for this file
-set RunOnStartup = "False" :: Off by default, change to "True" if you want to run this on startup
-set ChangeDownloadFolder = "False" :: Off by default, change to "True" if you want to change Chrome's Download location
-set ChangeDefaultBrowser = "True" :: On by default, change to "False" if you want to don't want to change the default browser to Chrome
-set ChangePersonalisation = "True" :: On by default, change to "False" if you don't want to change the personalisation settings
-set OpenWebpages = "True" :: On by default, change to "False" if you don't want to open the webpages 
+set RunOnStartup ="False" :: Off by default, change to "True" if you want to run this on startup
+set ChangeDownloadFolder="False" :: Off by default, change to "True" if you want to change Chrome's Download location
+set ChangeDefaultBrowser="True" :: On by default, change to "False" if you want to don't want to change the default browser to Chrome
+set ChangePersonalisation="True" :: On by default, change to "False" if you don't want to change the personalisation settings
+set OpenWebpages ="True" :: On by default, change to "False" if you don't want to open the webpages 
 
 IF "%ChangePersonalisation%"=="True" (
     ECHO Applying Personalisation Settings
