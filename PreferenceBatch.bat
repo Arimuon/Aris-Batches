@@ -5,7 +5,10 @@ set RunOnStartup="False" :: Off by default, change to "True" if you want to run 
 set ChangeDownloadFolder="False" :: Off by default, change to "True" if you want to change Chrome's Download location
 set ChangeDefaultBrowser="True" :: On by default, change to "False" if you want to don't want to change the default browser to Chrome
 set ChangePersonalisation="True" :: On by default, change to "False" if you don't want to change the personalisation settings
-set OpenWebpages="True" :: On by default, change to "False" if you don't want to open the webpages 
+set OpenWebpages="True" :: On by default, change to "False" if you don't want to open the webpages
+:: Here is some path settings for this file
+set DownloadFolder="%USERPROFILE%\Downloads" :: Change this to where you want your browser to download files to
+set DefaultBrowser="C:\Program Files\Google\Chrome\Application\chrome.exe" :: Change this to the path of any browser of your choice
 
 if "%ChangePersonalisation%"=="True" (
     ECHO Applying Personalisation Settings
@@ -33,16 +36,16 @@ if "%ChangePersonalisation%"=="True" (
 
 if "%ChangeDefaultBrowser%"=="True" (
     ECHO Modifying Registry for Default Browser
-    :: Makes Chrome the default browser
-    REG add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\FileAssoc.html\shell\open\command" /v "(Default)" /t reg_sz /d "C:\Program Files\Google\Chrome\Application\chrome.exe" /F
-    ECHO Chrome Made Default Browser
+    :: Changes the default browser to whatever is in the "DefaultBrowser" variable
+    REG add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\FileAssoc.html\shell\open\command" /v "(Default)" /t reg_sz /d "%DefaultBrowser%" /F
+    ECHO Default Browser Changed!
     ) else (
     ECHO Change default browser skipped!
 )
 
 if "%ChangeDownloadFolder%"=="True" (
     ECHO Changing Chrome Download Folder
-    REG add "HKCU\Software\Google\Chrome\Default" /v DownloadDirectory /t REG_SZ /d "C:\Users\%USERPROFILE%\OneDrive - Cheshire College South & West\Downloads" /F
+    REG add "HKCU\Software\Google\Chrome\Default" /v DownloadDirectory /t REG_SZ /d "%DownloadFolder%" /F
     ECHO Chrome Download Folder Changed
     ) else (
     ECHO Change download folder skipped!
@@ -50,11 +53,11 @@ if "%ChangeDownloadFolder%"=="True" (
 
 if "%OpenWebPages%"=="True" (
     ECHO Opening Bitwarden Extension
-    start chrome https://chromewebstore.google.com/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb
+    start chrome https://chromewebstore.google.com/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb 
     ECHO Opening Google Sign In
-    start chrome https://accounts.google.com/
+    start chrome https://accounts.google.com/ 
     ECHO Opening Github Sign In
-    start chrome https://github.com/login/
+    start chrome https://github.com/login/ 
     ) else (
     ECHO Web pages skipped!
 )
@@ -62,7 +65,7 @@ if "%OpenWebPages%"=="True" (
 if "%RunOnStartup%"=="True" (
     set batchPath=%~dp0
     set startupPath=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup
-    copy "%batchPath%" "%startupPath%"
+    copy "%~dp0%~nx0" "%startupPath%"
     ECHO This batch was set to run on start up
     ) else (
     ECHO Set run on startup skipped!
