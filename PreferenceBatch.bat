@@ -1,11 +1,11 @@
 @ECHO OFF
 ECHO Preference Automation
 :: Here is the settings for this file
-set RunOnStartup ="False" :: Off by default, change to "True" if you want to run this on startup
+set RunOnStartup="False" :: Off by default, change to "True" if you want to run this on startup
 set ChangeDownloadFolder="False" :: Off by default, change to "True" if you want to change Chrome's Download location
 set ChangeDefaultBrowser="True" :: On by default, change to "False" if you want to don't want to change the default browser to Chrome
 set ChangePersonalisation="True" :: On by default, change to "False" if you don't want to change the personalisation settings
-set OpenWebpages ="True" :: On by default, change to "False" if you don't want to open the webpages 
+set OpenWebpages="True" :: On by default, change to "False" if you don't want to open the webpages 
 
 if "%ChangePersonalisation%"=="True" (
     ECHO Applying Personalisation Settings
@@ -27,7 +27,7 @@ if "%ChangePersonalisation%"=="True" (
     :: Disables taskbar transparency
     REG add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v EnableTransparency /t REG_DWORD /d 0 /F
     ECHO Applied Personalisation Settings
-    ) else: (
+    ) else (
     ECHO Change personalisation skipped!
 )
 
@@ -36,7 +36,7 @@ if "%ChangeDefaultBrowser%"=="True" (
     :: Makes Chrome the default browser
     REG add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\FileAssoc.html\shell\open\command" /v "(Default)" /t reg_sz /d "C:\Program Files\Google\Chrome\Application\chrome.exe" /F
     ECHO Chrome Made Default Browser
-    ) else: (
+    ) else (
     ECHO Change default browser skipped!
 )
 
@@ -44,7 +44,7 @@ if "%ChangeDownloadFolder%"=="True" (
     ECHO Changing Chrome Download Folder
     REG add "HKCU\Software\Google\Chrome\Default" /v DownloadDirectory /t REG_SZ /d "C:\Users\%USERPROFILE%\OneDrive - Cheshire College South & West\Downloads" /F
     ECHO Chrome Download Folder Changed
-    ) else: (
+    ) else (
     ECHO Change download folder skipped!
 )
 
@@ -55,7 +55,7 @@ if "%OpenWebPages%"=="True" (
     start chrome https://accounts.google.com/
     ECHO Opening Github Sign In
     start chrome https://github.com/login/
-    ) else: (
+    ) else (
     ECHO Web pages skipped!
 )
 
@@ -64,7 +64,7 @@ if "%RunOnStartup%"=="True" (
     set startupPath=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup
     copy "%batchPath%" "%startupPath%"
     ECHO This batch was set to run on start up
-    ) else: (
+    ) else (
     ECHO Set run on startup skipped!
 )
-PAUSE
+pause
