@@ -1,7 +1,7 @@
 @ECHO OFF
 ECHO Preference Automation
 :: Here is the settings for this file
-set RunOnStartup = True :: Change to "True" if you want to run this on startup
+set RunOnStartup = False :: Change to "True" if you want to run this on startup
 set ChangeDownloadFolder = False :: Change to "True" if you want to change Chrome's Download location
 
 :: Sets apps to dark theme
