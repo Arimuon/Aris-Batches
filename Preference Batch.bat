@@ -1,5 +1,5 @@
 @ECHO OFF
-ECHO Setup Automation
+ECHO Preference Automation
 
 REG add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v AppsUseLightTheme /t REG_DWORD /d 0 /F
 REG add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v SystemUsesLightTheme /t REG_DWORD /d 0 /F
@@ -25,7 +25,8 @@ start chrome https://accounts.google.com/
 ECHO Opening Github Sign In
 start chrome https://github.com/login/
 
-set batchPath=C:\Users\College\OneDrive - Cheshire College South ^& West\Documents\My Setup File\Selector.bat
+:: Set your own file path
+set batchPath=""
 set startupPath=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup
 copy "%batchPath%" "%startupPath%"
 ECHO Batch set to run on start up
