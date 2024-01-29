@@ -5,6 +5,7 @@ set RunOnStartup = False :: Off by default, change to "True" if you want to run 
 set ChangeDownloadFolder = False :: Off by default, change to "True" if you want to change Chrome's Download location
 set ChangeDefaultBrowser = True :: On by default, change to "False" if you want to don't want to change the default browser to Chrome
 set ChangePersonalisation = True :: On by default, change to "False" if you don't want to change the personalisation settings
+set OpenWebpages = True :: On by default, change to "False" if you don't want to open the webpages
 
 IF "%ChangePersonalisation%"=="True" (
     ECHO Applying Personalisation Settings
@@ -43,23 +44,27 @@ IF "%ChangeDownloadFolder%"=="True" (
     ECHO Changing Chrome Download Folder
     REG add "HKCU\Software\Google\Chrome\Default" /v DownloadDirectory /t REG_SZ /d "C:\Users\%USERPROFILE%\OneDrive - Cheshire College South & West\Downloads" /F
     ECHO Chrome Download Folder Changed
-) ELSE (
+    ) ELSE (
     ECHO Change download folder skipped!
 )
 
-ECHO Opening Bitwarden Extension
-start chrome https://chromewebstore.google.com/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb
-ECHO Opening Google Sign In
-start chrome https://accounts.google.com/
-ECHO Opening Github Sign In
-start chrome https://github.com/login/
+IF "%OpenWebPages%"=="True" (
+    ECHO Opening Bitwarden Extension
+    start chrome https://chromewebstore.google.com/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb
+    ECHO Opening Google Sign In
+    start chrome https://accounts.google.com/
+    ECHO Opening Github Sign In
+    start chrome https://github.com/login/
+    ) ELSE (
+    ECHO Web pages skipped!
+)
 
 IF "%RunOnStartup%"=="True" (
     set batchPath=%~dp0
     set startupPath=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup
     copy "%batchPath%" "%startupPath%"
     ECHO This batch was set to run on start up
-) ELSE (
+    ) ELSE (
     ECHO Run on startup skipped!
 )
 PAUSE
