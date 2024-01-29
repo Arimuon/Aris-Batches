@@ -5,7 +5,7 @@ set RunOnStartup = False :: Off by default, change to "True" if you want to run 
 set ChangeDownloadFolder = False :: Off by default, change to "True" if you want to change Chrome's Download location
 set ChangeDefaultBrowser = True :: On by default, change to "False" if you want to don't want to change the default browser to Chrome
 set ChangePersonalisation = True :: On by default, change to "False" if you don't want to change the personalisation settings
-set OpenWebpages = True :: On by default, change to "False" if you don't want to open the webpages
+set OpenWebpages = True :: On by default, change to "False" if you don't want to open the webpages 
 
 IF "%ChangePersonalisation%"=="True" (
     ECHO Applying Personalisation Settings
@@ -65,6 +65,6 @@ IF "%RunOnStartup%"=="True" (
     copy "%batchPath%" "%startupPath%"
     ECHO This batch was set to run on start up
     ) ELSE (
-    ECHO Run on startup skipped!
+    ECHO Set run on startup skipped!
 )
 PAUSE
