@@ -3,7 +3,7 @@ ECHO Preference Automation
 :: Off by default, change to "True" if you want to run this on startup
 set "RunOnStartup=False"
 :: Off by default, change to "True" if you want to change Chrome's Download location
-set "ChangeChromeDownloadFolder=False"
+set "ChangeDownloadFolder=False"
 :: On by default, change to "False" if you don't want to change the default browser to Chrome
 set "ChangeDefaultBrowser=True"
 :: On by default, change to "False" if you don't want to change the personalisation settings
@@ -48,7 +48,7 @@ if "%ChangeDefaultBrowser%"=="True" (
     ECHO Change default browser skipped!
 )
 
-if "%ChangeChromeDownloadFolder%"=="True" (
+if "%ChangeDownloadFolder%"=="True" (
     ECHO Changing Chrome Download Folder
     REG add "HKCU\Software\Google\Chrome\Default" /v DownloadDirectory /t REG_SZ /d "%DownloadFolder%" /F
     ECHO Chrome Download Folder Changed
