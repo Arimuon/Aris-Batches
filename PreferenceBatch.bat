@@ -1,14 +1,19 @@
 @ECHO OFF
 ECHO Preference Automation
-:: Here is the settings for this file
-set RunOnStartup="False" :: Off by default, change to "True" if you want to run this on startup
-set ChangeChromeDownloadFolder="False" :: Off by default, change to "True" if you want to change Chrome's Download location
-set ChangeDefaultBrowser="True" :: On by default, change to "False" if you want to don't want to change the default browser to Chrome
-set ChangePersonalisation="True" :: On by default, change to "False" if you don't want to change the personalisation settings
-set OpenWebpages="True" :: On by default, change to "False" if you don't want to open the webpages
-:: Here is some path settings for this file
-set DownloadFolder="%USERPROFILE%\Downloads" :: Change this to where you want your browser to download files to
-set DefaultBrowser="C:\Program Files\Google\Chrome\Application\chrome.exe" :: Change this to the path of any browser of your choice
+:: Off by default, change to "True" if you want to run this on startup
+set "RunOnStartup=False"
+:: Off by default, change to "True" if you want to change Chrome's Download location
+set "ChangeChromeDownloadFolder=False"
+:: On by default, change to "False" if you don't want to change the default browser to Chrome
+set "ChangeDefaultBrowser=True"
+:: On by default, change to "False" if you don't want to change the personalisation settings
+set "ChangePersonalisation=True"
+:: On by default, change to "True" if you want to open the webpages
+set "OpenWebpages=True"
+:: Change this to where you want your browser to download files to
+set "DownloadFolder=%USERPROFILE%\Downloads"
+:: Change this to the path of any browser of your choice
+set "DefaultBrowser=C:\Program Files\Google\Chrome\Application\chrome.exe"
 
 if "%ChangePersonalisation%"=="True" (
     ECHO Applying Personalisation Settings
@@ -53,11 +58,11 @@ if "%ChangeChromeDownloadFolder%"=="True" (
 
 if "%OpenWebPages%"=="True" (
     ECHO Opening Bitwarden Extension
-    start chrome https://chromewebstore.google.com/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb 
+    start "" "%DefaultBrowser%" https://chromewebstore.google.com/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb 
     ECHO Opening Google Sign In
-    start chrome https://accounts.google.com/ 
+    start "" "%DefaultBrowser%" https://accounts.google.com/ 
     ECHO Opening Github Sign In
-    start chrome https://github.com/login/ 
+    start "" "%DefaultBrowser%" https://github.com/login/ 
     ) else (
     ECHO Web pages skipped!
 )
