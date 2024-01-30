@@ -1,4 +1,8 @@
 @ECHO OFF
+:: This batch file is designed to automate the personalisation of Windows 10/11
+:: It can also be used to change the default browser to and change the download folder (Only tested for Chrome)
+:: Made by Arimuon, report issues on GitHub: https://github.com/Arimuon/Aris-Batches/issues
+
 ECHO Preference Automation
 :: Off by default, change to "True" if you want to run this on startup
 set "RunOnStartup=False"
