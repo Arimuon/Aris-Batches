@@ -25,21 +25,6 @@ cd "%DownloadFolder%"
 :: Change this to a longer time if the download takes longer than 3 seconds
 timeout /t 3
 
-:: Check if tar command is available (indicating Windows 10 version 17063 or later)
-where tar >nul 2>nul
-if %ERRORLEVEL% EQU 0 (
-    ECHO Windows version requirement met at 10.0.17063 or later
-    ECHO Proceeding with extracting...
-    ECHO Extracting installation file...
-    :: Extract the zip file with tar
-    tar -xf "%ZipFile%"
-    ECHO Extraction complete!
-) else (
-    ECHO ERROR: This script requires Windows version 10.0.17063 or later to run.
-    ECHO Please upgrade your Windows version and try again.
-    GOTO :EOF
-)
-
 :: Installation + Extraction Cleanup Operations
 if exist "%DownloadFolder%\%ZipFile%" del "%DownloadFolder%\%ZipFile%"
 ECHO Installation cleanup complete!
@@ -52,7 +37,6 @@ start "" "%DownloadFolder%\BeamMP_Installer.exe" /SILENT
 timeout /t 1
 ECHO Launching BeamMP launcher...
 start "" "%USERPROFILE%\AppData\Roaming\BeamMP-Launcher\BeamMP-Launcher.exe"
-
 
 ECHO BeamMP installation complete!
 :: Keeps the terminal open to see the output/error messages
