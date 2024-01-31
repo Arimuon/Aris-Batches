@@ -15,9 +15,9 @@ ECHO Downloading SteamSetup.exe
 curl -L -o SteamSetup.exe https://cdn.cloudflare.steamstatic.com/client/installer/SteamSetup.exe
 
 
-:: Installing Steam without admin and running the installer silently
+:: Installing Steam without admin and opening installer
 ECHO Installing Steam...
-cmd /min /C "set __COMPAT_LAYER=RUNASINVOKER && start "" "SteamSetup.exe" /SILENT "%USERPROFILE%\Downloads\SteamSetup.exe""
+cmd /min /C "set __COMPAT_LAYER=RUNASINVOKER && start "" "SteamSetup.exe" "%USERPROFILE%\Downloads\SteamSetup.exe""
 
 
 :: Installation + Extraction Cleanup Operations
