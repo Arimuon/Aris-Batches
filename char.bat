@@ -1,0 +1,1 @@
+start "" "https://www.google.com/search?q=skibidi+toilet&rlz=1C1GCEB_enGB1092GB1092&oq=skibi&gs_lcrp=EgZjaHJvbWUqCggAEAAYsQMYgAQyCggAEAAYsQMYgAQyCggBEC4YsQMYgAQyBggCEEUYOTINCAMQLhjUAhixAxiABDIKCAQQABixAxiABDIKCAUQABixAxiABDIQCAYQLhiDARixAxiABBiKBTIKCAcQABixAxiABDIKCAgQLhixAxiABDIHCAkQABiPAtIBCTk1ODdqMGoxNagCALACAA&sourceid=chrome&ie=UTF-8"
